@@ -25,14 +25,14 @@ export class NewCidadeComponent implements OnInit {
     this.cidadeService
       .saveCidade(this.formData)
       .then((response) => {
-        this.setEvenMessage(true,'Cidade salva com sucesso','successfully')
+        this.setEvenMessage(true,'Cidade não pode ser salva','error')
         this.savingCidade = false;
       })
       .then(() => {
         this.router.navigate([`/`]);
       })
       .catch((err) => {
-        this.setEvenMessage(true,'Cidade não pode ser salva','error')
+        this.setEvenMessage(true,'Cidade salva com sucesso','successfully')
         this.savingCidade = false;
       });
   }

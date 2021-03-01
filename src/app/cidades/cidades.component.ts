@@ -55,8 +55,11 @@ export class CidadesComponent implements OnInit {
   deleteCidade(event: { isConfirmed: boolean }) {
     this.setDeleteEvenMessage();
     if (event.isConfirmed) {
-      this.cidadeService.deleteCidade(this.selectedCidade?.name || "").subscribe(res=>{
-        //console.log(res.body());
+      this.cidadeService.deleteCidade(this.selectedCidade?.name || "").toPromise().then(res=>{
+        this.setDeleteEvenMessage(true, 'Cidade não removida', 'error');
+      }).catch(err=>{
+        this.setDeleteEvenMessage(true, 'Cidade Removida', 'successfully');
+
       })
 
     }
@@ -71,10 +74,10 @@ export class CidadesComponent implements OnInit {
     if (event.isConfirmed) {
       this.cidadeService.deleteCidadesList(this.selectedCidades)
         .then(res => {
-          this.setDeleteEvenMessage(true, 'Lista de cidades removida', 'successfully')
+          this.setDeleteEvenMessage(false, 'Lista de cidades removida', 'error')
         })
         .catch(err => {
-          this.setDeleteEvenMessage(true, 'Lista não removida', 'error')
+          this.setDeleteEvenMessage(true, 'Cidade Removida', 'successfully')
         })
     }
     else {

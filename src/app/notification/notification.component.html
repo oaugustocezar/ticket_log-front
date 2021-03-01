@@ -1,0 +1,12 @@
+<div>
+    <div *ngIf="value === 'successfully'" class="notification successfully" [ngClass]="{'show':show}">
+        <div class="notification__icon" [inlineSVG]="'../../assets/svg/check.svg'"></div>
+        <span class="notification__msg">OK: {{msg}}</span>
+        <ng-content></ng-content>
+    </div>
+    <div *ngIf="value === 'error'" class="notification error" [ngClass]="{'show':show}">
+        <div class="notification__icon" [inlineSVG]="'../../assets/svg/warning.svg'"></div>
+        <span class="notification__msg">Erro: {{msg}}</span>
+        <ng-content></ng-content>
+    </div>
+</div>

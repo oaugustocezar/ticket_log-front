@@ -1,0 +1,54 @@
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    border: 0px solid rgba(0, 0, 0, 0);
+    outline: none;
+    width: 100%;
+    background-color: $green;
+    cursor: pointer;
+    color: $white;
+    font-size: 2rem;
+    border-radius: 0.6rem;
+    padding: 0;
+
+    > a {
+        flex-grow: 1;
+        color: white;
+        display: flex;
+        align-self: stretch;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        text-decoration: none; /* no underline */
+    }
+
+    &:hover {
+        background-color: rgba($color: $green-darken-2, $alpha: 0.9);
+    }
+}
+
+.btn-del {
+    background-color:$red-accent-4;
+
+    .icon {
+
+        width: 2rem;
+        fill: white;
+    }
+}
+
+.btn-edit {
+    background-color:$blue-darken-2;
+
+    &:hover{
+        background-color:$blue-darken-4;
+    }
+
+    .icon {
+
+        width: 2rem;
+        fill: white;
+    }
+}

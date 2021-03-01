@@ -1,0 +1,9 @@
+<div id="app">
+  <!--Toolbar -->
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <app-notification [show]="notification.show"
+                    [msg]="notification.msg"
+                    [value]="notification.type">
+  </app-notification>
+</div>

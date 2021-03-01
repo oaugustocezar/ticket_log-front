@@ -1,0 +1,55 @@
+<div class="cidades">
+    <h1>CIDADES</h1>
+    <table *ngIf="cidadesList.length !==0">
+        <thead>
+            <th>Nome</th>
+            <th>População</th>
+            <th>Custo</th>
+            <th>
+                <div class="tbl-btn">
+                    <button class="btn btn-edit" (click)="modoEdicao=!modoEdicao">
+                        <span class="icon" [inlineSVG]="'assets/svg/edit.svg'"></span>
+                        Editar
+                    </button>
+                </div>
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cidade of cidadesList;index as itemIndex; trackBy:trackByFn">
+                <td>{{cidade.name}}</td>
+                <td>{{cidade.population}}</td>
+                <td>{{cidade.costCity}}</td>
+                <td>
+                    <div class="tbl-btn">
+                        <button *ngIf="!modoEdicao" class="btn btn-del" (click)="selectCidade(cidade)">
+                            <span class="icon" [inlineSVG]="'assets/svg/delete.svg'"></span>
+                        </button>
+                        <input *ngIf="modoEdicao" (change)="selectCidades()" type="checkbox"
+                            [(ngModel)]="cidade.isChecked">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-container *ngIf="cidadesList.length===0">
+        <h1>Nenhuma cidade cadastrada</h1>
+    </ng-container>
+
+    <div class="nav-buttons" *ngIf="(pageOfCidades.totalPages > 1)">
+        <a (click)="previousPage()" class="previous" *ngIf="pageOfCidades.pageNumber > 0">
+            &laquo; Previous
+        </a>
+        <a (click)="nextPage()" class="next" *ngIf="pageOfCidades.pageNumber < pageOfCidades.totalPages-1">
+            Next &raquo;
+        </a>
+    </div>
+
+    <div>
+        <button *ngIf="modoEdicao" (click)="askDeleteGroup=true">Excluir</button>
+    </div>
+    <app-delete-warning [data]="selectedCidade" (confirm)="deleteCidade($event)" [isClosed]="!open">
+    </app-delete-warning>
+    <app-delete-warning [data]="selectedCidades" (confirm)="deleteCidadeList($event)" [isClosed]="!askDeleteGroup">
+    </app-delete-warning>
+</div>

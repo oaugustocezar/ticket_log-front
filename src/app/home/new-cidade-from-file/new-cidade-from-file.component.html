@@ -1,0 +1,20 @@
+<!-- ITEM COMPONENT -->
+<div class="item">
+  <div class="item-box">
+    <div class="left">
+      <img class="icon" [src]="estado?.urlImage || ''" />
+    </div>
+    <div class="right">
+      <h2>Inserir Cidade</h2>
+
+      <span *ngIf="estado">{{estado.uf?.toLocaleUpperCase()}}</span>
+
+      <input #upload name="upload" type="file" multiple class="item__field" (change)="selectFiles(upload)">
+
+      <button class="item__btn">
+        <a (click)="saveCidade()">Save</a>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- ITEM COMPONENT -->

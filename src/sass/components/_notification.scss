@@ -1,0 +1,73 @@
+.notification {
+    z-index: 3;
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        animation: show_slide 1s ease forwards;
+        transition: none;
+    }
+    &.error {
+        color: $red-darken-4;
+        border-left: 0.6rem solid $red-accent-2;
+        .notification__icon {
+            width: 3rem;
+            fill: $red-accent-4;
+        }
+        background-color: $red-accent-1;
+    }
+    &.successfully {
+        border-left: 0.6rem solid $green;
+        background-color: $notification-successfully;
+        color: $white;
+        .notification__icon {
+            width: 3rem;
+            fill: $white;
+        }
+    }
+
+    > * {
+        margin-left: 1rem;
+    }
+
+    transition: opacity 2s, visibility 2s;
+    opacity: 0 ;
+    visibility: hidden;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    min-height: 5rem;
+    padding: 0.5rem 1rem;
+    margin-right: 2rem;
+    position: fixed;
+    right: 0;
+    bottom: 5rem;
+
+    &__msg {
+        font-weight: bold;
+    }
+
+    .close-btn {
+        display: none;
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: $red-accent-4;
+    }
+}
+
+@keyframes show_slide {
+    0% {
+        transform: translateX(100%);
+    }
+    40% {
+        transform: translateX(-10%);
+    }
+    80% {
+        transform: translateX(5%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}

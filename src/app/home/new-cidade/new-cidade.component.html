@@ -1,0 +1,22 @@
+<!-- ITEM COMPONENT -->
+<div class="item">
+  <div class="item-box">
+    <div class="left">
+      <img class="icon" [src]="estado?.urlImage || ''" />
+    </div>
+    <div class="right">
+      <h2>Inserir Cidade</h2>
+
+      <span *ngIf="estado">{{estado.uf?.toLocaleUpperCase()}}</span>
+
+      <input type="text" class="item__field" placeholder="Nome" [(ngModel)]="formData.name">
+
+      <input type="text" class="item__field" placeholder="Populacao" [(ngModel)]="formData.population">
+
+      <button class="item__btn">
+        <a (click)="saveCidade()">Save</a>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- ITEM COMPONENT -->

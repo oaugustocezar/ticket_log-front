@@ -1,0 +1,91 @@
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 0 0px rgba($white, $alpha: 0.6);
+        background-color: rgba($white, $alpha: 0.6);
+    }
+    to {
+        box-shadow: 0 0 0 1000px rgba($white, $alpha: 0);
+    }
+}
+
+@keyframes openTop {
+    0% {
+        transform: translateY(-0.8rem) rotate(0deg);
+        background-color: $header-color-logo;
+    }
+    50% {
+        transform: translateY(0rem) rotate(0deg);
+        background-color: $header-color-logo;
+    }
+    100% {
+        transform: rotate(90deg);
+        background-color: $red-accent-3;
+    }
+}
+@keyframes openBtm {
+    0% {
+        transform: translateY(0.8rem) rotate(0deg);
+        background-color: $header-color-logo;
+    }
+    50% {
+        transform: translateY(0rem) rotate(0deg);
+        background-color: $header-color-logo;
+    }
+    100% {
+        transform: rotate(90deg);
+        background-color: $red-accent-3;
+    }
+}
+@keyframes openMid {
+    0% {
+        background-color: $header-color-logo;
+    }
+    50% {
+        transform: rotate(0deg);
+        background-color: $header-color-logo;
+    }
+    100% {
+        transform: rotate(45deg);
+        background-color: $red-accent-3;
+    }
+}
+
+@keyframes closeTop {
+    100% {
+        transform: translateY(-0.8rem) rotate(0deg);
+    }
+    50% {
+        transform: translateY(0rem) rotate(0deg);
+        background-color: $red-accent-3;
+    }
+    0% {
+        transform: rotate(90deg);
+        background-color: $red-accent-3;
+
+    }
+}
+
+@keyframes closeBtm {
+    100% {
+        transform: translateY(0.8rem) rotate(0deg);
+    }
+    50% {
+        transform: translateY(0rem) rotate(0deg);
+        background-color: $red-accent-3;
+    }
+    0% {
+        transform: rotate(90deg);
+        background-color: $red-accent-3;        
+    }
+}
+
+@keyframes closeMid {
+    50% {
+        transform: rotate(0deg);
+        background-color: $red-accent-3;
+    }
+    0% {
+        transform: rotate(45deg);
+        background-color: $red-accent-3;
+    }
+}

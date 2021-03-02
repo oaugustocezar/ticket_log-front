@@ -52,10 +52,13 @@ export class CidadesComponent implements OnInit {
 
   }
 
+
+
   deleteCidade(event: { isConfirmed: boolean }) {
     this.setDeleteEvenMessage();
+
     if (event.isConfirmed) {
-      this.cidadeService.deleteCidade(this.selectedCidade?.name || "").toPromise().then(res=>{
+      this.cidadeService.deleteCidade(this.selectedCidade?.name || "{}").toPromise().then(res=>{
         this.setDeleteEvenMessage(true, 'Cidade não removida', 'error');
       }).catch(err=>{
         this.setDeleteEvenMessage(true, 'Cidade Removida', 'successfully');

@@ -8,9 +8,9 @@ import { Notification } from '../shared/notification.model';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  estado = 'PR';
-  nomeOfState = 'Paraná';
-  url = 'assets/svg/Bandeira_do_Paraná.svg';
+  estado = 'SC';
+  nomeOfState = 'Santa Catarina';
+  url = 'assets/svg/Bandeira_de_Santa_Catarina.svg';
   estadoSelected: Estado | undefined;
   closePopUp = false;
 

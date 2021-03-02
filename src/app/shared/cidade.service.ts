@@ -37,7 +37,7 @@ export class CidadeService {
 
   saveCidadeFromFile(data: FormData) {
     return this.http
-      .post(`${environment.apiCidade}/upload`, data)
+      .post(`${environment.apiCsv}/upload`, data)
       .toPromise();
   }
 

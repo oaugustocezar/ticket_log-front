@@ -2,9 +2,9 @@
   <div class="home">
 
     <div class="home__content">
-      <h1>Estado: {{ estadoSelected.uf }}</h1>
-      <h2>População: {{ estadoSelected.ufPopulation}}</h2>
-      <h2>Custo: {{ estadoSelected.costState }}</h2>
+      <h1>Estado: {{ estadoSelected.uf}}</h1>
+      <h2>População do estado: {{ estadoSelected.ufPopulation}}</h2>
+      <h2>Custo do estado: {{ estadoSelected.costState }}</h2>
       <div class="select">
         <!-- <div class="form-item__icon" [inlineSVG]="formIcons.orderPaymentMethod"></div> -->
         <label class="select__label"> Selecione o estado:</label>
@@ -15,10 +15,10 @@
         </select>
       </div>
       <button class="btn btn--inserir">
-        <a href="/#insert" (click)="newCidade()">Inserir nova cidade</a>
+        <a href="/#insert" (click)="newCidade()">Cadastrar cidade</a>
       </button>
       <button class="btn">
-        <a href="/#insertfile" (click)="newCidade()">Inserir por arquivo</a>
+        <a href="/#insertfile" (click)="newCidade()">Cadastrar por aquivos em lotes</a>
       </button>
     </div>
 

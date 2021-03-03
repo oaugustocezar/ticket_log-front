@@ -29,6 +29,13 @@
     }
   }
 
+  .find-field{
+    width: 50%;
+    align-content: center;
+  }
+
+
+
   .tbl-btn {
     display: flex;
     justify-content: center;
@@ -55,7 +62,7 @@
       font-size: 1.5rem;
       background-color: transparent;
       color: $grey-darken-3;
-      
+
       &:hover{
         transform: scale(1.1);
       }
@@ -67,6 +74,8 @@
       }
     }
   }
+
+
 
   > table {
     th:last-child,

@@ -5,7 +5,7 @@
     <div class="home__content">
       <h1>Estado: {{ estadoSelected.uf}}</h1>
       <h2>População do estado: {{ estadoSelected.ufPopulation}}</h2>
-      <h2>Custo do estado: {{ estadoSelected.costState }}</h2>
+      <h2>Custo do estado: R$ {{ estadoSelected.costState }}</h2>
       <div class="select">
         <label class="select__label"> Selecione o estado:</label>
         <select class="select__input" name="estado" id="estado" [(ngModel)]="nomeOfState" (change)="selectEstado()">
@@ -48,10 +48,8 @@
       </button>
     </div>-->
   </div>
-
-
-
   <app-cidades [uf]="estadoSelected.uf || ''"></app-cidades>
   <app-popup-home *ngIf="!closePopUp" [data]="estadoSelected"></app-popup-home>
   <app-popup-file *ngIf="!closePopUp" [data]="estadoSelected"></app-popup-file>
 </div>
+

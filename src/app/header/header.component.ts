@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   isChecked = false
   isClicked = false
   addClassX = false
+  urlImage = "src\assets\svg\ticketlogo.png";
 
   handleScroll() {
     const scrollY = window.scrollY

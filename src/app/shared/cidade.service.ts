@@ -16,7 +16,11 @@ export class CidadeService {
   constructor(private http: HttpClient) {}
 
   getCidadesList() {
-    return this.http.get(environment.apiCidade).toPromise();
+    return this.http.get<Cidade>(environment.apiCidade).toPromise();
+  }
+
+  getCidadeByNameAndUF(name :string | undefined, uf :string){
+    return this.http.get<Cidade[]>(environment.apiCidade +`/pesquisa?name=${name}&uf=${uf}`)
   }
 
   getCidadesListPorEstado(uf: String) {

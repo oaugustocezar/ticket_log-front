@@ -23,8 +23,8 @@ export class CidadesComponent implements OnInit {
   selectedCidades: Cidade[] = []
   modoEdicao = false;
   askDeleteGroup = false
-  data = [];
-  status = "";
+  data : string|undefined;
+  cidade: Cidade | undefined;
 
   constructor(private cidadeService: CidadeService, private router: Router) { }
 
@@ -32,6 +32,29 @@ export class CidadesComponent implements OnInit {
     this.subscribeNotifications();
     this.setCidadePage(this.uf);
   }
+
+  /*pesquisa(){
+
+    this.cidadeService.getCidadeByNameAndUF(this.formData?.name , this.uf || "{}").subscribe(response =>{
+
+      this.cidadesList = response;
+  }
+  }*/
+
+   pesquisa() {
+    this.cidadeService.getCidadeByNameAndUF(this.formData?.name , this.uf || "{}").subscribe(response =>{
+
+      this.cidadesList = response;
+
+    })
+  }
+
+  limpar(){
+    this.formData.name = "";
+
+  }
+
+
 
 
   saveCidade() {

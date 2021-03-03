@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
 
   limpar(){
     this.formData.name = "";
-    this.formData.population ='';
+    this.formData.population = parseInt('');
   }
 
 

@@ -41,9 +41,9 @@ export class CidadeService {
       .toPromise();
   }
 
-  deleteCidade(name: string) {
+  deleteCidade(name: string,uf:string) {
     return this.http
-      .delete(`${environment.apiCidade}?name=${name}`);
+      .delete(`${environment.apiCidade}?name=${name}&uf=${uf}`);
   }
 
   deleteCidadesList(data: Cidade[]) {

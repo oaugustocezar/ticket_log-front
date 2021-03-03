@@ -48,6 +48,12 @@ export class HomeComponent implements OnInit {
     this.setEstadoSelected(this.estados);
   }
 
+  limpar(){
+    this.formData.name = "";
+    this.formData.population ='';
+  }
+
+
   saveCidade() {
     this.setEvenMessage()
     this.savingCidade = true;

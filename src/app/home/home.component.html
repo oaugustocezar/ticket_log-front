@@ -18,11 +18,12 @@
 
       <input type="text" class="item__field" placeholder="Nome" [(ngModel)]="formData.name">
 
-      <input type="text" class="item__field" placeholder="Populacao" [(ngModel)]="formData.population">
+      <input type="text" class="item__field" placeholder="Populacao" name="populacao" [(ngModel)]="formData.population">
 
-      <button class="btn">
-        <a (click)="saveCidade()">Save</a>
+      <button class="btn" type="submit">
+        <a (click)="saveCidade(); limpar()">Save</a>
       </button>
+
       </div>
      <!---- <button class="btn btn--inserir">
         <a href="/#insert" (click)="newCidade()">Cadastrar cidade</a>

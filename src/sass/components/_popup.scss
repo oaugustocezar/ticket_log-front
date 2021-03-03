@@ -17,7 +17,18 @@
         visibility: visible;
         opacity: 1;
     }
+    button {
 
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 40rem;
+      right: 50%;
+      background-color: $blue-darken-1;
+
+      &:hover{
+          background-color: $blue-darken-3;
+      }
+  }
     &__content {
         position: relative;
         flex-basis: 60%;

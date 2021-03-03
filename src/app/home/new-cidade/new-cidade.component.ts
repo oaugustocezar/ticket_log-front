@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Cidade } from 'src/app/shared/cidade.model';
 import { CidadeService } from 'src/app/shared/cidade.service';
 import { Estado } from 'src/app/shared/estado.model';
+import { Notification } from 'src/app/shared/notification.model';
 
 @Component({
   selector: 'app-new-cidade',

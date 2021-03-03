@@ -1,55 +1,82 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { CidadeService } from '../shared/cidade.service';
 import { Estado } from '../shared/estado.model';
 import { EstadoService } from '../shared/estado.service';
 import { Notification } from '../shared/notification.model';
+import { Cidade } from 'src/app/shared/cidade.model';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  estado = 'SC';
+  @Input() estado: Estado | undefined;
+  formData = new Cidade();
+  estados = 'Santa Catarina';
   nomeOfState = 'Santa Catarina';
   url = 'assets/svg/Bandeira_de_Santa_Catarina.svg';
   estadoSelected: Estado | undefined;
   closePopUp = false;
+  savingCidade = false;
+
 
   options = [
     {
       nome: 'Rio Grande do Sul',
-      uf: 'RS',
+      uf: 'Rio Grande do Sul',
       url: 'assets/svg/Bandeira_do_Rio_Grande_do_Sul.png',
     },
     {
       nome: 'Santa Catarina',
-      uf: 'SC',
+      uf: 'Santa Catarina',
       url: 'assets/svg/Bandeira_de_Santa_Catarina.svg',
     },
     {
-      nome: 'Parana',
-      uf: 'PR',
+      nome: 'Paraná',
+      uf: 'Paraná',
       url: 'assets/svg/Bandeira_do_Paraná.svg',
     },
   ];
 
   constructor(
     private estadoService: EstadoService,
-    private cidadeService: CidadeService
+    private cidadeService: CidadeService,private router: Router
   ) { }
 
   ngOnInit(): void {
     this.subscribeNotifications();
-    this.setEstadoSelected(this.estado);
+    this.setEstadoSelected(this.estados);
   }
+
+  saveCidade() {
+    this.setEvenMessage()
+    this.savingCidade = true;
+
+    this.formData.uf = this.estados;
+    this.cidadeService
+      .saveCidade(this.formData)
+      .then((response) => {
+        this.setEvenMessage(true,'Cidade não pode ser salva','error')
+        this.savingCidade = false;
+      })
+      .then(() => {
+        this.router.navigate([`/`]);
+      })
+      .catch((err) => {
+        this.setEvenMessage(true,'Cidade salva com sucesso','successfully')
+        this.savingCidade = false;
+      });
+  }
+
 
   selectEstado() {
     let value = this.nomeOfState;
     let estadoSelected = this.options.filter(
-      (estado) => estado.nome === value
+      (estados) => estados.nome === value
     )[0];
-    this.estado = estadoSelected.uf;
+    this.estados = estadoSelected.uf;
     this.url = estadoSelected.url;
-    this.setEstadoSelected(this.estado);
+    this.setEstadoSelected(this.estados);
   }
 
   newCidade() {
@@ -59,8 +86,8 @@ export class HomeComponent implements OnInit {
   private setEstadoSelected(uf: string) {
     this.estadoService
       .getEstadoById(uf)
-      .then((estado) => {
-        this.estadoSelected = estado as Estado;
+      .then((estados) => {
+        this.estadoSelected = estados as Estado;
         this.estadoSelected.urlImage = this.url;
       })
       .catch((err) => { });
@@ -70,13 +97,20 @@ export class HomeComponent implements OnInit {
     this.cidadeService.savedCidade.subscribe((notification: Notification) => {
       if (notification.type === "successfully") {
         this.closePopUp = true;
-        this.setEstadoSelected(this.estadoSelected?.uf || this.estado);
+        this.setEstadoSelected(this.estadoSelected?.uf || this.estados);
       }
     });
     this.cidadeService.deletedCidade.subscribe((notification: Notification) => {
       if (notification.type === "successfully")
-        this.setEstadoSelected(this.estadoSelected?.uf || this.estado);
+        this.setEstadoSelected(this.estadoSelected?.uf || this.estados);
 
+    });
+  }
+  private setEvenMessage(show = false, msg = '', type = '') {
+    this.cidadeService.savedCidade.emit({
+      show: show,
+      msg: msg,
+      type: type,
     });
   }
 }

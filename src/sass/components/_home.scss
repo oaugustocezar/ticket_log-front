@@ -21,6 +21,7 @@
         display: flex;
         flex-direction: column;
 
+
         h1 {
             color: $blue-darken-4;
             font-size: 3rem;
@@ -41,6 +42,7 @@
         }
     }
     > img {
+        margin-right: 150px;
         height: 20rem;
         width: auto;
         @media only screen and (max-width: $SMALL-DEV) {
@@ -49,11 +51,23 @@
         }
     }
 
+    .item__field{
+
+      margin-top: 10px;
+
+      border: 2px solid $green-darken-4;
+      border-radius: 4px;
+
+    }
+
     .btn {
+
+        margin-left: 20%;
         margin-top: 2rem;
         width: 100%;
         max-width: 40rem;
         background-color: $blue-darken-1;
+
 
         &:hover{
             background-color: $blue-darken-3;

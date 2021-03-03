@@ -3,6 +3,9 @@ import { Cidade } from '../shared/cidade.model';
 import { CidadeService } from '../shared/cidade.service';
 import { Notification } from '../shared/notification.model';
 import { Page } from '../shared/page.model';
+import { Estado } from 'src/app/shared/estado.model';
+import { Router } from '@angular/router';
+import { map, catchError} from 'rxjs/operators';
 
 @Component({
   selector: 'app-cidades',
@@ -10,6 +13,9 @@ import { Page } from '../shared/page.model';
 })
 export class CidadesComponent implements OnInit {
   @Input() uf = '';
+  @Input() estado: Estado | undefined;
+  formData = new Cidade();
+  savingCidade = false;
   pageOfCidades = new Page();
   cidadesList: Cidade[] = [];
   open = false
@@ -17,12 +23,41 @@ export class CidadesComponent implements OnInit {
   selectedCidades: Cidade[] = []
   modoEdicao = false;
   askDeleteGroup = false
+  data = [];
 
-  constructor(private cidadeService: CidadeService) { }
+  constructor(private cidadeService: CidadeService, private router: Router) { }
 
   ngOnInit(): void {
     this.subscribeNotifications();
     this.setCidadePage(this.uf);
+  }
+
+  saveCidade() {
+    this.setEvenMessage()
+    this.savingCidade = true;
+
+    this.formData.uf = this.estado?.uf;
+    this.cidadeService
+      .saveCidade(this.formData)
+      .then((response) => {
+        this.setEvenMessage(true,'Cidade não pode ser salva','error')
+        this.savingCidade = false;
+      })
+      .then(() => {
+        this.router.navigate([`/`]);
+      })
+      .catch((err) => {
+        this.setEvenMessage(true,'Cidade salva com sucesso','successfully')
+        this.savingCidade = false;
+      });
+  }
+
+  private setEvenMessage(show = false, msg = '', type = '') {
+    this.cidadeService.savedCidade.emit({
+      show: show,
+      msg: msg,
+      type: type,
+    });
   }
 
   nextPage() {
@@ -59,11 +94,18 @@ export class CidadesComponent implements OnInit {
 
     if (event.isConfirmed) {
       this.cidadeService.deleteCidade(this.selectedCidade?.name || "{}").toPromise().then(res=>{
-        this.setDeleteEvenMessage(true, 'Cidade não removida', 'error');
+        this.setDeleteEvenMessage(true, 'Cidade removida', 'succesfuly');
+        console.log(res);
       }).catch(err=>{
-        this.setDeleteEvenMessage(true, 'Cidade Removida', 'successfully');
+        this.setDeleteEvenMessage(true, 'Cidade não pode ser removida', 'error');
+        console.log(err);
+      });
+      /*.toPromise().then(res=>{
+        this.setDeleteEvenMessage(true, 'Cidade removida', 'succesfuly');
+      }).catch(err=>{
+        this.setDeleteEvenMessage(true, 'Cidade não pode ser removida', 'error');
 
-      })
+      })*/
 
     }
     else {

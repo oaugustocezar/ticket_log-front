@@ -1,29 +1,54 @@
 <div class="container__home" *ngIf="estadoSelected">
   <div class="home">
+    <img [src]="url" />
 
     <div class="home__content">
       <h1>Estado: {{ estadoSelected.uf}}</h1>
       <h2>População do estado: {{ estadoSelected.ufPopulation}}</h2>
       <h2>Custo do estado: {{ estadoSelected.costState }}</h2>
       <div class="select">
-        <!-- <div class="form-item__icon" [inlineSVG]="formIcons.orderPaymentMethod"></div> -->
         <label class="select__label"> Selecione o estado:</label>
         <select class="select__input" name="estado" id="estado" [(ngModel)]="nomeOfState" (change)="selectEstado()">
           <option *ngFor="let option of options" [value]="option.nome">
             {{ option.nome }}
           </option>
         </select>
-      </div>
-      <button class="btn btn--inserir">
-        <a href="/#insert" (click)="newCidade()">Cadastrar cidade</a>
+
+      <span *ngIf="estado">{{estado.uf?.toLocaleUpperCase()}}</span>
+
+      <input type="text" class="item__field" placeholder="Nome" [(ngModel)]="formData.name">
+
+      <input type="text" class="item__field" placeholder="Populacao" [(ngModel)]="formData.population">
+
+      <button class="btn">
+        <a (click)="saveCidade()">Save</a>
       </button>
+      </div>
+     <!---- <button class="btn btn--inserir">
+        <a href="/#insert" (click)="newCidade()">Cadastrar cidade</a>
+        </button> -->
       <button class="btn">
         <a href="/#insertfile" (click)="newCidade()">Cadastrar por aquivos em lotes</a>
       </button>
     </div>
 
-    <img [src]="url" />
+
+    <!--<div class="right">
+      <h2>Inserir Cidade</h2>
+
+      <span *ngIf="estado">{{estado.uf?.toLocaleUpperCase()}}</span>
+
+      <input type="text" class="item__field" placeholder="Nome" [(ngModel)]="formData.name">
+
+      <input type="text" class="item__field" placeholder="Populacao" [(ngModel)]="formData.population">
+
+      <button class="item__btn">
+        <a (click)="saveCidade()">Save</a>
+      </button>
+    </div>-->
   </div>
+
+
 
   <app-cidades [uf]="estadoSelected.uf || ''"></app-cidades>
   <app-popup-home *ngIf="!closePopUp" [data]="estadoSelected"></app-popup-home>

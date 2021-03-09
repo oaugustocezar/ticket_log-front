@@ -1,23 +1,22 @@
-<div class ="find">
-  <input type="text" class="find-field" placeholder="Pesquisa" name="pesquisa" [(ngModel)]="formData.name">
+<!--<div class ="find">
+  <input (keyup)="pesquisa()" type="text" class="find-field" placeholder="Pesquisa" name="pesquisa" [(ngModel)]="formData.name">
   <button class="btn">
     <a (click)="pesquisa(); limpar()">Save</a>
   </button>
-</div>
+</div>-->
 <div class="cidades">
     <h1>CIDADES</h1>
-    <table *ngIf="cidadesList.length !==0">
+    <table>
         <thead>
-            <th>Nome</th>
+            <th class="find-name"><input (keyup)="pesquisa()" type="text" class="find-field" placeholder="Nome" name="pesquisa" [(ngModel)]="formData.name"></th>
             <th>População</th>
             <th>Custo</th>
             <th>
                 <div class="tbl-btn">
-
                 </div>
             </th>
         </thead>
-        <tbody>
+        <tbody *ngIf="cidadesList.length !==0">
             <tr *ngFor="let cidade of cidadesList;index as itemIndex; trackBy:trackByFn">
                 <td>{{cidade.name}}</td>
                 <td>{{cidade.population}}</td>
@@ -36,7 +35,7 @@
     </table>
 
     <ng-container *ngIf="cidadesList.length===0">
-        <h1>Não há cidades cadastradas</h1>
+        <h1>Cidade(s) não encontrada(s)</h1>       
     </ng-container>
 
     <div class="nav-buttons" *ngIf="(pageOfCidades.totalPages > 1)">

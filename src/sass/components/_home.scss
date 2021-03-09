@@ -1,14 +1,40 @@
 .container__home {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     background-color: $grey-lighten-2;
+    
+
+}
+
+.bandeira img{
+    position: relative;
+
+    left: 30%;
+        
+    margin-top: 40px;
+    margin-right: 150px;
+    height: 20rem;
+    width: auto;
+    @media only screen and (max-width: $SMALL-DEV) {
+        margin-bottom: 2rem;
+        height: 12rem;
+    }
+}
+
+.home__content{
+    position: relative;
+    left: 20%;
 }
 
 .home {
+    
     padding: 1rem 10rem;
     margin-bottom: 5rem;
-    display: flex;
+    display:flex;
+    
 
+    
     @media only screen and (max-width: $SMALL-DEV) {
         padding: 1rem 2rem;
         flex-direction: column-reverse;
@@ -53,19 +79,22 @@
     }
 
     .item__field{
-
       margin-top: 10px;
-
       border: 2px solid $green-darken-4;
       border-radius: 4px;
+      
+      //margin-left: 20%;
+        margin-top: 2rem;
+        width: 40%;
+        max-width: 40rem;
 
     }
 
     .btn {
 
-        margin-left: 20%;
+        //margin-left: 20%;
         margin-top: 2rem;
-        width: 100%;
+        width: 40%;
         max-width: 40rem;
         background-color: $blue-darken-1;
 

@@ -1,6 +1,11 @@
 <div class="container__home" *ngIf="estadoSelected">
   <div class="home">
-    <img [src]="url" />
+    <div class="bandeira">
+
+      <img [src]="url" />
+
+    </div>
+    
 
     <div class="home__content">
       <h1>Estado: {{ estadoSelected.uf}}</h1>
@@ -14,9 +19,9 @@
           </option>
         </select>
 
-      <span *ngIf="estado">{{estado.uf?.toLocaleUpperCase()}}</span>
+      <span *ngIf="estado">{{estado.uf?.toLocaleUpperCase()}}</span><br>
 
-      <input type="text" class="item__field" placeholder="Nome" [(ngModel)]="formData.name">
+      <input type="text" class="item__field" placeholder="Nome" [(ngModel)]="formData.name"><br>
 
       <input type="text" class="item__field" placeholder="Populacao" name="populacao" [(ngModel)]="formData.population">
 
@@ -29,7 +34,7 @@
         <a href="/#insert" (click)="newCidade()">Cadastrar cidade</a>
         </button> -->
       <button class="btn">
-        <a href="/#insertfile" (click)="newCidade()">Cadastrar por aquivos em lotes</a>
+        <a href="/#insertfile" (click)="newCidade()">Cadastrar por arquivo</a>
       </button>
     </div>
 

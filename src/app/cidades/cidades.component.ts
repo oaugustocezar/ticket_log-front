@@ -54,6 +54,11 @@ export class CidadesComponent implements OnInit {
 
   }
 
+  atualiza(){
+    this.formData.name = "";
+    this.router.navigate(['/']);
+  }
+
 
 
 

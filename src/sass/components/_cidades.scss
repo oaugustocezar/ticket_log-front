@@ -1,5 +1,25 @@
 .cidades {
-  padding: 1rem 3rem;
+  font-family: arial, sans-serif;
+  padding: 1rem 3rem;  
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:black;
+    font-weight: bolder;
+
+    opacity: 1; /* Firefox */
+  }
+  .find-name input{
+    background-color: #cccccc;
+    font-size: 2rem;
+        border: 1px solid white;
+        text-align: left;
+        padding: 8px;
+    height: 30px;    
+
+
+
+   
+  }
   .nav-buttons {
     display: flex;
     flex-grow: 1;
@@ -29,11 +49,9 @@
     }
   }
 
-  .find-field{
-    width: 50%;
-    align-content: center;
-  }
+ 
 
+ 
 
 
   .tbl-btn {
